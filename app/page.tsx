@@ -22,7 +22,8 @@ export default function Home() {
       });
       
       if (result) {
-        const blob = new Blob([result as any], { type: "application/pdf" });
+        // ใช้การหลบ Type สองชั้น เพื่อให้ผ่านทุกกฎของ TypeScript
+        const blob = new Blob([result as unknown as BlobPart], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
