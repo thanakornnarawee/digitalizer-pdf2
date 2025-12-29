@@ -22,7 +22,7 @@ export default function Home() {
       });
       
       if (result) {
-        const blob = new Blob([result], { type: "application/pdf" });
+        const blob = new Blob([result as any], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
