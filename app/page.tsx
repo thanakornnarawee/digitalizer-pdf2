@@ -22,23 +22,9 @@ export default function Home() {
       });
       
       if (result) {
-        // ใช้การหลบ Type สองชั้น เพื่อให้ผ่านทุกกฎของ TypeScript
-        if (result) {
-        // บรรทัดข้างล่างนี้คือคำสั่งพิเศษเพื่อสั่งให้ TypeScript ข้ามการตรวจสอบบรรทัดถัดไป
+        // ใช้ @ts-ignore เพื่อข้าม Error ของ SharedArrayBuffer ตอน Build
         // @ts-ignore
         const blob = new Blob([result], { type: "application/pdf" });
-        
-        const url = URL.createObjectURL(blob);
-        
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `Digitized_${file.name.split('.')[0]}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        
-        setStatus("แปลงไฟล์สำเร็จ!");
-      }
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
@@ -60,15 +46,15 @@ export default function Home() {
 
   return (
     <div style={{ width: '100%', maxWidth: '800px' }}>
-      {/* Navigation Header สไตล์ Corporate */}
+      {/* Navigation Header สไตล์ K-Bank Corporate */}
       <nav className="nav">
         <div className="logo-container">
           <div className="logo-wrapper">
              <div className="logo-fallback">IT</div>
           </div>
           <div className="brand-text">
-            <div className="app-name">แสกนรูปเพื่อก๊อปตัวหนังสือเป็นไฟล์ PDF<span className="pro-badge">DIGITIZER</span></div>
-            <div className="app-subtitle">ระบบเปลี่ยนไฟล์ภาพเป็น PDF เพื่อใช้หาตัวหนังสือ</div>
+            <div className="app-name">IT SUPPORT <span className="pro-badge">DIGITIZER</span></div>
+            <div className="app-subtitle">ระบบเปลี่ยนไฟล์ภาพเป็น PDF เพื่อการสืบค้นข้อมูล</div>
           </div>
         </div>
         <div className="status-pill">
@@ -87,7 +73,7 @@ export default function Home() {
             disabled={loading}
             style={{ display: 'none' }}
           />
-          <div style={{ fontSize: '56px', marginBottom: '20px' }}>ไฟล์</div>
+          <div style={{ fontSize: '56px', marginBottom: '20px' }}>📄</div>
           <h2 style={{ margin: '0 0 12px 0', color: 'var(--text)', fontSize: '24px' }}>
             {fileName ? fileName : "เลือกเอกสารเพื่อเริ่มระบบ"}
           </h2>
@@ -102,7 +88,7 @@ export default function Home() {
               กำลังเปลี่ยนเป็นเอกสารสู่ระบบดิจิทัล...
             </div>
             <p style={{ color: 'var(--muted)', fontSize: '14px', marginTop: '12px' }}>
-                ระบบกำลังสร้าง Searchable Layer เพื่อการค้นหาข้อมูล
+                ระบบกำลังสร้าง Searchable Layer เพื่อการค้นหาข้อความ
             </p>
           </div>
         )}
@@ -111,7 +97,7 @@ export default function Home() {
           <div className="sorts">
           </div>
           <div style={{ color: 'var(--muted)', fontSize: '13px', fontWeight: '500' }}>
-          ข้อมูลปลอดภัย ประมวลผลภายในเครื่องเท่านั้น
+            🔐 ข้อมูลปลอดภัย ประมวลผลภายในเครื่องเท่านั้น
           </div>
         </div>
       </div>
@@ -121,21 +107,22 @@ export default function Home() {
         <h3 style={{ color: 'var(--accent)', marginBottom: '16px', fontSize: '18px' }}>ยกระดับองค์กรด้วยการเปลี่ยนเอกสารเป็นดิจิทัล</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
           <div>
-            <h4 style={{ marginBottom: '4px' }}>ค้นหาได้ทันที</h4>
+            <h4 style={{ marginBottom: '4px' }}>🔍 ค้นหาได้ทันที</h4>
             <p style={{ fontSize: '13px', color: 'var(--muted)' }}>เปลี่ยนไฟล์สแกนให้ค้นหาคำสำคัญได้ผ่าน Ctrl+F ทันที</p>
           </div>
           <div>
-            <h4 style={{ marginBottom: '4px' }}>มาตรฐานความปลอดภัย</h4>
-            <p style={{ fontSize: '13px', color: 'var(--muted)' }}>ประมวลผลที่เครื่องผู้ใช้ (Client-side) ข้อมูลไม่รั่วไหลสู่ Cloud แต่มีข้อจำกัดคือทำได้เพียง 1-4 ภาพต่อครั้ง</p>
+            <h4 style={{ marginBottom: '4px' }}>🛡️ มาตรฐานความปลอดภัย</h4>
+            <p style={{ fontSize: '13px', color: 'var(--muted)' }}>ประมวลผลที่เครื่องผู้ใช้ (Client-side) ข้อมูลไม่รั่วไหลสู่ Cloud ภายใต้ความปลอดภัยระดับสูงสุด</p>
           </div>
           <div>
-            <h4 style={{ marginBottom: '4px' }}>ลดการใช้กระดาษ</h4>
+            <h4 style={{ marginBottom: '4px' }}>🌱 ลดการใช้กระดาษ</h4>
             <p style={{ fontSize: '13px', color: 'var(--muted)' }}>เปลี่ยนเอกสารกระดาษให้เป็นข้อมูลดิจิทัลที่ใช้งานต่อได้ 100%</p>
           </div>
         </div>
-        
       </footer>
-      <p style={{ fontSize: '13px', color: 'var(--muted)' }}>Thanakorn |IT Support Experience</p>
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+         <p style={{ fontSize: '13px', color: 'var(--muted)', opacity: 0.8 }}>Thanakorn | IT Support Experience</p>
+      </div>
     </div>
   );
 }
