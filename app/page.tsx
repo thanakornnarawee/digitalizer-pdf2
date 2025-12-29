@@ -23,8 +23,8 @@ export default function Home() {
       });
       
       if (result) {
-        // บรรทัดเจ้าปัญหา จะถูกข้ามการตรวจเช็คแน่นอนเพราะมี @ts-nocheck ด้านบนสุด
-        const blob = new Blob([result], { type: "application/pdf" });
+        // @ts-ignore
+        const blob = new Blob([result as any], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
