@@ -24,9 +24,10 @@ export default function Home() {
       if (result) {
         // ใช้การหลบ Type สองชั้น เพื่อให้ผ่านทุกกฎของ TypeScript
         if (result) {
-        // ใช้คำสั่ง @ts-ignore เพื่อสั่งให้ TypeScript ไม่ต้องตรวจเช็คบรรทัดนี้ตอน Build
+        // บรรทัดข้างล่างนี้คือคำสั่งพิเศษเพื่อสั่งให้ TypeScript ข้ามการตรวจสอบบรรทัดถัดไป
         // @ts-ignore
         const blob = new Blob([result], { type: "application/pdf" });
+        
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
@@ -38,7 +39,6 @@ export default function Home() {
         
         setStatus("แปลงไฟล์สำเร็จ!");
       }
-      
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
