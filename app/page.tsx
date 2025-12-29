@@ -22,9 +22,11 @@ export default function Home() {
         if (msg.includes("OCR")) setStatus("AI กำลังวิเคราะห์ข้อมูล...");
       });
       
-      if (result) {
-        // @ts-ignore
-        const blob = new Blob([result as any], { type: "application/pdf" });
+   if (result) {
+        // เปลี่ยนวิธีเขียน: ดึง buffer ออกมาตรงๆ และระบุ Type ให้ชัดเจน
+        const pdfBuffer: ArrayBuffer = result.buffer;
+        const blob = new Blob([pdfBuffer], { type: "application/pdf" });
+        
         const url = URL.createObjectURL(blob);
         
         const a = document.createElement("a");
