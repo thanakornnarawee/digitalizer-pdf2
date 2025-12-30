@@ -54,7 +54,7 @@ export default function Home() {
              <div className="logo-fallback">IT</div>
           </div>
           <div className="brand-text">
-            <div className="app-name">IT SUPPORT <span className="pro-badge">DIGITIZER</span></div>
+            <div className="app-name">เปลี่ยนรูปเป็น pdf<span className="pro-badge">DIGITIZER</span></div>
             <div className="app-subtitle">ระบบเปลี่ยนไฟล์ภาพเป็น PDF เพื่อการสืบค้นข้อมูล</div>
           </div>
         </div>
